@@ -57,6 +57,7 @@ public class CollectionTestSuite {
         expectedList.add(17);
         expectedList.add(43);
         expectedList.add(19);
+
         //When
         List<Integer> resultList = oddNumbersExterminator.exterminate(oddNumbersList);
 
