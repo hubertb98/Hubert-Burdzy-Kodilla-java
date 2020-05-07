@@ -10,7 +10,6 @@ public class OddNumbersExterminator {
         for (Integer number: numbers) {
             if ((number % 2) == 1) {
                 oddNumbersList.add(number);
-//                System.out.print(number + ", ");
             }
         }
         return oddNumbersList;
