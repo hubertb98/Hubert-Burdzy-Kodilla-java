@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class OddNumbersExterminator {
 
     public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
-        System.out.print("Odd numbers: ");
+        ArrayList<Integer> oddNumbersList = new ArrayList<>();
+
         for (Integer number: numbers) {
             if ((number % 2) == 1) {
-                System.out.print(number + ", ");
+                oddNumbersList.add(number);
+//                System.out.print(number + ", ");
             }
         }
-        return numbers;
+        return oddNumbersList;
     }
 }

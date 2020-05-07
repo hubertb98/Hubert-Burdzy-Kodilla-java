@@ -1,10 +1,9 @@
 package com.kodilla.testing.collection;
 
-import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.*;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.List;
 
 public class CollectionTestSuite {
     private static OddNumbersExterminator oddNumbersExterminator;
@@ -39,19 +38,30 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList() {
         //Given
-        Random random = new Random();
         ArrayList<Integer> oddNumbersList = new ArrayList<>();
+        oddNumbersList.add(1);
+        oddNumbersList.add(3);
+        oddNumbersList.add(14);
+        oddNumbersList.add(10);
+        oddNumbersList.add(32);
+        oddNumbersList.add(39);
+        oddNumbersList.add(26);
+        oddNumbersList.add(17);
+        oddNumbersList.add(43);
+        oddNumbersList.add(19);
 
+        ArrayList<Integer> expectedList = new ArrayList<>();
+        expectedList.add(1);
+        expectedList.add(3);
+        expectedList.add(39);
+        expectedList.add(17);
+        expectedList.add(43);
+        expectedList.add(19);
         //When
-        for (int i = 0; i < 10; i++) {
-            int number = random.nextInt(50 + 1);
-            oddNumbersList.add(number);
-
-        }
-        ArrayList<Integer> expectedList = oddNumbersExterminator.exterminate(oddNumbersList);
+        List<Integer> resultList = oddNumbersExterminator.exterminate(oddNumbersList);
 
         //Then
-        Assert.assertEquals(expectedList, oddNumbersList);
+        Assert.assertEquals(expectedList, resultList);
 
     }
 }
