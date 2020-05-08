@@ -26,7 +26,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(shape);
         shapeCollector.addFigure(shape1);
         shapeCollector.addFigure(shape2);
-        
+
         //When
         int collectionSize = shapeCollector.getShapeCollection().size();
 
