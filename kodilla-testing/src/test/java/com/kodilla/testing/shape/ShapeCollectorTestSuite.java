@@ -21,13 +21,17 @@ public class ShapeCollectorTestSuite {
     public void testAddFigure() {
         //Given
         Shape shape = new Circle(3);
-
-        //When
+        Shape shape1 = new Square(3);
+        Shape shape2 = new Triangle(3,4,5);
         shapeCollector.addFigure(shape);
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        
+        //When
         int collectionSize = shapeCollector.getShapeCollection().size();
 
         //Then
-        Assert.assertEquals(1, collectionSize);
+        Assert.assertEquals(3, collectionSize);
     }
 
     @Test
