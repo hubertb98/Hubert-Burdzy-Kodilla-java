@@ -1,7 +1,6 @@
 package com.kodilla.testing.forum.statistics;
 
 public class CalculateStatistics {
-    Statistics statistics;
     private int userQuantity;
     private int postsQuantity;
     private int commentsQuantity;
@@ -35,7 +34,7 @@ public class CalculateStatistics {
 
     public double calculateAvgPostsPerUser(){
         if (userQuantity > 0) {
-            return postsQuantity / userQuantity;
+            return (double) postsQuantity / userQuantity;
         } else {
             return 0;
         }
@@ -43,7 +42,7 @@ public class CalculateStatistics {
 
     public double calculateAvgCommentsPerUser() {
         if(userQuantity > 0) {
-            return commentsQuantity / userQuantity;
+            return (double)commentsQuantity / userQuantity;
         } else {
             return 0;
         }
@@ -51,7 +50,7 @@ public class CalculateStatistics {
 
     public double calculateAvgCommentsPerPost() {
         if(postsQuantity > 0) {
-            return commentsQuantity / postsQuantity;
+            return (double) commentsQuantity / postsQuantity;
         } else {
             return 0;
         }
@@ -70,8 +69,9 @@ public class CalculateStatistics {
         System.out.println("User quantity: " + userQuantity);
         System.out.println("Posts quantity: " + postsQuantity);
         System.out.println("Comments quantity: " + commentsQuantity);
-        System.out.println("Average posts per user: " + avgPostsPerUser);
-        System.out.println("Average comments per user: " + avgCommentsPerUser);
-        System.out.println("Average comments per post: " + avgCommentsPerPost);
+        System.out.println("Average posts per user: " + String.format("%.2f", avgPostsPerUser));
+        System.out.println("Average comments per user: " + String.format("%.2f", avgCommentsPerUser));
+        System.out.println("Average comments per post: " + String.format("%.2f", avgCommentsPerPost));
+        System.out.println();
     }
 }

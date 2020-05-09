@@ -1,5 +1,6 @@
 package com.kodilla.testing.forum.statistics;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,18 @@ public class StatisticsTestSuite {
     public void before() {
         statisticsMock = mock(Statistics.class);
         calculateStatistics = new CalculateStatistics();
+
+        when(statisticsMock.postsCount()).thenReturn(10);
+        when(statisticsMock.commentsCount()).thenReturn(34);
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < 13; i ++) {
+            users.add("User" + 1);
+        }
+        when(statisticsMock.userNames()).thenReturn(users);
+    }
+    @After
+    public void after() {
+        calculateStatistics.showStatistics();
     }
 
     @Test
@@ -58,13 +71,6 @@ public class StatisticsTestSuite {
         Assert.assertEquals(0, commentQuantity);
     }
 
-    /* TODO: 5/9/2020
-        1. Uzupełnić testy:
-            testCalculateStatisticsWhenCommentsLessThanPosts(),
-            testCalculateStatisticsWhenCommentsMoreThanPosts();
-        2. Sprawdzić poprawność innych testó zgodnie z poleceniem.
-    */
-
     @Test
     public void testCalculateStatisticsWhenCommentsLessThanPosts(){
         //Given
@@ -72,19 +78,27 @@ public class StatisticsTestSuite {
         when(statisticsMock.postsCount()).thenReturn(30);
 
         //When
+        double avgCommentsPerPost= calculateStatistics.calculateAvgCommentsPerPost();
+        calculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
+        Assert.assertEquals(0.3, avgCommentsPerPost, 1);
     }
+
     @Test
     public void testCalculateStatisticsWhenCommentsMoreThanPosts(){
         //Given
         when(statisticsMock.commentsCount()).thenReturn(50);
-        when(statisticsMock.postsCount()).thenReturn(6);
+        when(statisticsMock.postsCount()).thenReturn(11);
 
         //When
+        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        double avgCommentsPerPost= calculateStatistics.calculateAvgCommentsPerPost();
 
         //Then
+        Assert.assertEquals(4.5, avgCommentsPerPost, 1);
     }
+
     @Test
     public void testCalculateStatisticsWhenUsersCountZero(){
         //Given
@@ -99,6 +113,7 @@ public class StatisticsTestSuite {
         //Then
         Assert.assertEquals(normalList, userList);
     }
+
     @Test
     public void testCalculateStatisticsWhenUsersCountHundred(){
         //Given
