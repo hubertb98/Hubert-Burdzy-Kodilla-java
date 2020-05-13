@@ -21,8 +21,8 @@ public class StreamMain {
         String text = "Lorem ipsum dolor sit amet";
         String text2 = "~";
 
-        poemBeautifier.beautify(text, s -> s.toUpperCase());
-        poemBeautifier.beautify(text, s -> s.toLowerCase());
+        poemBeautifier.beautify(text, String::toUpperCase);
+        poemBeautifier.beautify(text, String::toLowerCase);
         poemBeautifier.beautify(text, s -> s.replace(" ", "-"));
         poemBeautifier.beautify(text, s -> text2 + s + text2);
 
