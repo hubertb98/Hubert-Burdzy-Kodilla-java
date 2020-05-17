@@ -42,7 +42,7 @@ public class WorldTestSuite {
         world.addContinent(europe);
         world.addContinent(asia);
         world.addContinent(northAmerica);
-        
+
         europe.addCountry(poland);
         europe.addCountry(portugal);
         europe.addCountry(unitedKingdom);
