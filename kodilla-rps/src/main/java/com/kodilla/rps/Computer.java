@@ -8,7 +8,7 @@ public class Computer implements Players {
 
     @Override
     public int getMove() {
-        int move = random.nextInt(3)+1;
+        int move = random.nextInt(5)+1;
         return move;
     }
 

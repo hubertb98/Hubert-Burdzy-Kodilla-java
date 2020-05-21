@@ -1,11 +1,11 @@
 package com.kodilla.rps;
 
 public class GameRules {
-//    1 - rock
-//    2 - paper
-//    3 - scissors
-//    4 - spock
-//    5 - lizard
+    /*1-rock
+    2-paper
+    3-scissors
+    4-spock
+    5-lizard*/
     String computerPlay, humanPlay;
     boolean end = false;
     Human human = new Human();
@@ -13,34 +13,47 @@ public class GameRules {
     InputOutput inOut = new InputOutput();
 
 
-
     public int whoWin(int computerMove, int humanMove) {
-        if(computerMove == 1) {
+        if (computerMove == 1) {
             computerPlay = "Rock";
         } else if (computerMove == 2) {
             computerPlay = "Paper";
         } else if (computerMove == 3) {
             computerPlay = "Scissors";
+        } else if (computerMove == 4) {
+            computerPlay = "Spock";
+        } else if (computerMove == 5) {
+            computerPlay = "Lizard";
         }
 
-        if(humanMove == 1) {
+        if (humanMove == 1) {
             humanPlay = "Rock";
         } else if (humanMove == 2) {
             humanPlay = "Paper";
         } else if (humanMove == 3) {
             humanPlay = "Scissors";
+        } else if (humanMove == 4) {
+            humanPlay = "Spock";
+        } else if (humanMove == 5) {
+            humanPlay = "Lizard";
         }
 
         if (computerMove == 1) {
             if (humanMove == 1) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+                System.out.println(humanPlay + " vs " + computerPlay);
                 return 0; // Remis
-            } else if(humanMove == 2) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+            } else if (humanMove == 2) {
+                System.out.println(humanPlay + " vs " + computerPlay);
                 return 2; //human
             } else if (humanMove == 3) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+                System.out.println(humanPlay + " vs " + computerPlay);
                 return 1; //Computer
+            } else if (humanMove == 4) { // spock
+                System.out.println(humanPlay + " vs " + computerPlay);
+                return 2; // human
+            } else if (humanMove == 5) { //lizard
+                System.out.println(humanPlay + " vs " + computerPlay);
+                return 1; // comp
             }
         }
 
@@ -48,10 +61,16 @@ public class GameRules {
             if (humanMove == 1) {
                 System.out.println(computerPlay + " vs " + humanPlay);
                 return 1; //Computer
-            } else if(humanMove == 2) {
+            } else if (humanMove == 2) {
                 System.out.println(computerPlay + " vs " + humanPlay);
                 return 0; //remis
             } else if (humanMove == 3) {
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 2; // human
+            } else if (humanMove == 4) { // spock
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 1; // comp
+            } else if (humanMove == 5) { //lizard
                 System.out.println(computerPlay + " vs " + humanPlay);
                 return 2; // human
             }
@@ -61,10 +80,54 @@ public class GameRules {
             if (humanMove == 1) {
                 System.out.println(computerPlay + " vs " + humanPlay);
                 return 2; //human
-            } else if(humanMove == 2) {
+            } else if (humanMove == 2) {
                 System.out.println(computerPlay + " vs " + humanPlay);
                 return 1; //Computer
             } else if (humanMove == 3) {
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 0; // Remis
+            } else if (humanMove == 4) { // spock
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 2; //human
+            } else if (humanMove == 5) { //lizard
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 1; // comp
+            }
+        }
+
+        if (computerMove == 4) { // Spock
+            if (humanMove == 1) {
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 1; //comp
+            } else if (humanMove == 2) {
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 2; //human
+            } else if (humanMove == 3) {
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 1; // computer
+            } else if (humanMove == 4) { // spock
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 0; // Remis
+            } else if (humanMove == 5) { //lizard
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 2; // human
+            }
+        }
+
+        if (computerMove == 5) { //Lizard
+            if (humanMove == 1) { // rock
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 2; //human
+            } else if (humanMove == 2) { //paper
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 1; //Computer
+            } else if (humanMove == 3) { // scissors
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 2; // human
+            } else if (humanMove == 4) { // spock
+                System.out.println(computerPlay + " vs " + humanPlay);
+                return 1; //Computer
+            } else if (humanMove == 5) { //lizard
                 System.out.println(computerPlay + " vs " + humanPlay);
                 return 0; // Remis
             }
@@ -75,14 +138,10 @@ public class GameRules {
     public void newGame() {
         System.out.println("\nEnter 'n' if you want to play new game. " +
                 "Enter 'x' if you want to quit");
-        if(inOut.getStringInput().equals("n")) {
-            System.out.println();
-            end = false;
-
-            game();
-        } else if (inOut.getStringInput().equals("x")) {
-            System.out.println("Are you sure you want to quit?");
+        if (inOut.getStringInput().equals("x")) {
             System.exit(0);
+        } else if (inOut.getStringInput().equals("n")) {
+            game();
         }
     }
 
@@ -90,15 +149,16 @@ public class GameRules {
         System.out.println("Hey, let's play Rock, Paper, Scissors!");
         System.out.print("Enter the number of points to win: ");
         int winnerPoints = inOut.getIntInput();
-        System.out.println("Please enter a move.\n" + "---------------------------------" +
-                "\nRock = 1, Paper" + "= 2, Scissors = 3" + "\n---------------------------------");
-
+        System.out.println("---------------------------------" +
+                "\nRock = 1, Paper = 2, Scissors = 3, Spock = 4, Lizard = 5" +
+                "\n---------------------------------");
+        System.out.println("Please enter a move.");
 
         while (!end) {
-        int humanMove = human.getMove();
-        int computerMove = computer.getMove();
-        int winner = whoWin(computerMove, humanMove);
-            if(winner == 0) {
+            int humanMove = human.getMove();
+            int computerMove = computer.getMove();
+            int winner = whoWin(computerMove, humanMove);
+            if (winner == 0) {
                 tie();
             } else if (winner == 1) {
                 lose();
@@ -106,7 +166,7 @@ public class GameRules {
                 win();
             }
 
-            if(human.getPoints() >= winnerPoints || computer.getPoints() >= winnerPoints) {
+            if (human.getPoints() >= winnerPoints || computer.getPoints() >= winnerPoints) {
                 end = true;
                 newGame();
             }
