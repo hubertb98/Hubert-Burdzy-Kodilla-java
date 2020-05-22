@@ -9,7 +9,7 @@ public class InputOutput {
         String input = scan.nextLine();
         if (!(input.equals("n") || input.equals("x")))
             System.out.println("zła");
-            return input;
+        return input;
     }
 
     public int getIntInput() {

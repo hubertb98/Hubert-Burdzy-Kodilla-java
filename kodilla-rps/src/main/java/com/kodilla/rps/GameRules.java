@@ -6,12 +6,16 @@ public class GameRules {
     3-scissors
     4-spock
     5-lizard*/
-    String computerPlay, humanPlay;
+    String computerPlay;
+    String humanPlay;
     boolean end = false;
     Human human = new Human();
     Computer computer = new Computer();
     InputOutput inOut = new InputOutput();
 
+    public void vs() {
+        System.out.println(humanPlay + " vs " + computerPlay);
+    }
 
     public int whoWin(int computerMove, int humanMove) {
         if (computerMove == 1) {
@@ -40,95 +44,65 @@ public class GameRules {
 
         if (computerMove == 1) {
             if (humanMove == 1) {
-                System.out.println(humanPlay + " vs " + computerPlay);
+                vs();
                 return 0; // Remis
-            } else if (humanMove == 2) {
-                System.out.println(humanPlay + " vs " + computerPlay);
+            } else if (humanMove == 2 || humanMove == 4) {
+                vs();
                 return 2; //human
-            } else if (humanMove == 3) {
-                System.out.println(humanPlay + " vs " + computerPlay);
+            } else if (humanMove == 3 || humanMove == 5) {
+                vs();
                 return 1; //Computer
-            } else if (humanMove == 4) { // spock
-                System.out.println(humanPlay + " vs " + computerPlay);
-                return 2; // human
-            } else if (humanMove == 5) { //lizard
-                System.out.println(humanPlay + " vs " + computerPlay);
-                return 1; // comp
             }
         }
 
         if (computerMove == 2) {
-            if (humanMove == 1) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+            if (humanMove == 1 || humanMove == 4) {
+                vs();
                 return 1; //Computer
             } else if (humanMove == 2) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+                vs();
                 return 0; //remis
-            } else if (humanMove == 3) {
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 2; // human
-            } else if (humanMove == 4) { // spock
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 1; // comp
-            } else if (humanMove == 5) { //lizard
-                System.out.println(computerPlay + " vs " + humanPlay);
+            } else if (humanMove == 3 || humanMove == 5) {
+                vs();
                 return 2; // human
             }
         }
 
         if (computerMove == 3) {
-            if (humanMove == 1) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+            if (humanMove == 1 || humanMove == 4) {
+                vs();
                 return 2; //human
-            } else if (humanMove == 2) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+            } else if (humanMove == 2 || humanMove == 5) {
+                vs();
                 return 1; //Computer
             } else if (humanMove == 3) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+                vs();
                 return 0; // Remis
-            } else if (humanMove == 4) { // spock
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 2; //human
-            } else if (humanMove == 5) { //lizard
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 1; // comp
             }
         }
 
         if (computerMove == 4) { // Spock
-            if (humanMove == 1) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+            if (humanMove == 1 || humanMove == 3) {
+                vs();
                 return 1; //comp
-            } else if (humanMove == 2) {
-                System.out.println(computerPlay + " vs " + humanPlay);
+            } else if (humanMove == 2 || humanMove == 5) {
+                vs();
                 return 2; //human
-            } else if (humanMove == 3) {
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 1; // computer
             } else if (humanMove == 4) { // spock
-                System.out.println(computerPlay + " vs " + humanPlay);
+                vs();
                 return 0; // Remis
-            } else if (humanMove == 5) { //lizard
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 2; // human
             }
         }
 
         if (computerMove == 5) { //Lizard
-            if (humanMove == 1) { // rock
-                System.out.println(computerPlay + " vs " + humanPlay);
+            if (humanMove == 1 || humanMove == 3) { // rock
+                vs();
                 return 2; //human
-            } else if (humanMove == 2) { //paper
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 1; //Computer
-            } else if (humanMove == 3) { // scissors
-                System.out.println(computerPlay + " vs " + humanPlay);
-                return 2; // human
-            } else if (humanMove == 4) { // spock
-                System.out.println(computerPlay + " vs " + humanPlay);
+            } else if (humanMove == 2 || humanMove == 4) { //paper
+                vs();
                 return 1; //Computer
             } else if (humanMove == 5) { //lizard
-                System.out.println(computerPlay + " vs " + humanPlay);
+                vs();
                 return 0; // Remis
             }
         }
@@ -173,23 +147,26 @@ public class GameRules {
         }
     }
 
-    public void tie() {
-        System.out.println("It's a Tie!");
+    public void seePoints() {
         System.out.println("Your points: " + human.getPoints() +
                 " | " + "computer points: " + computer.getPoints());
+
+    }
+
+    public void tie() {
+        System.out.println("It's a Tie!");
+        seePoints();
     }
 
     public void lose() {
         System.out.println("You lose!");
         computer.addPoints();
-        System.out.println("Your points: " + human.getPoints() +
-                " | " + "computer points: " + computer.getPoints());
+        seePoints();
     }
 
     public void win() {
         System.out.println("You win!");
         human.addPoints();
-        System.out.println("Your points: " + human.getPoints() +
-                " | " + "computer points: " + computer.getPoints());
+        seePoints();
     }
 }
