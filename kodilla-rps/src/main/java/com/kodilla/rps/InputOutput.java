@@ -7,8 +7,16 @@ public class InputOutput {
 
     public String getStringInput() {
         String input = scan.nextLine();
-        if (!(input.equals("n") || input.equals("x")))
-            System.out.println("zła");
+        boolean isCorrectValues = false;
+
+        while(!isCorrectValues) {
+            if (!(input.equals("n") || input.equals("x"))) {
+                System.out.println("Wpisano złą wartość, proszę spróbować jeszcze raz.");
+                input = scan.nextLine();
+            } else {
+                isCorrectValues = true;
+            }
+        }
         return input;
     }
 

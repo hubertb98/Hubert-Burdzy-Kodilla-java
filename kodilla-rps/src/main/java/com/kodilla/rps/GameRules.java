@@ -115,6 +115,7 @@ public class GameRules {
         if (inOut.getStringInput().equals("x")) {
             System.exit(0);
         } else if (inOut.getStringInput().equals("n")) {
+            end = false;
             game();
         }
     }
