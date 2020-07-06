@@ -23,6 +23,7 @@ public class CalculatorTestSuite {
         double subResult = calculator.sub(5, 3);
         double mulResult = calculator.mul(3, 4);
         double divResult = calculator.div(15, 3);
+        
         //Then
         Assert.assertEquals(10, addResult, 0);
         Assert.assertEquals(2, subResult, 0);
