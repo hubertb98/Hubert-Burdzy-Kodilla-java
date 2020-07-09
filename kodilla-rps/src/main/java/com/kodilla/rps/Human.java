@@ -1,6 +1,6 @@
 package com.kodilla.rps;
 
-public class Human implements Players {
+public class Human implements Player {
     private InputOutput inOut = new InputOutput();
     private int points = 0;
 

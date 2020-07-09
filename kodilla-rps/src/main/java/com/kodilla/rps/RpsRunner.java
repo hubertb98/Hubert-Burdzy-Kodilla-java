@@ -2,7 +2,7 @@ package com.kodilla.rps;
 
 public class RpsRunner {
     public static void main(String[] args) {
-        GameRules gameRules = new GameRules();
+        GameRulesOld gameRules = new GameRulesOld();
         gameRules.game();
 
     }

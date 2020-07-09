@@ -1,0 +1,8 @@
+1. Poprawić metode newGame()
+    -> wylapuje blad przy wpisywaniu x lub n
+    -> trzeba wpisać 1x n enter, 1x n enter, dopiero gra się zaczyna od początku
+
+2. Poprawić pobieranie wartości
+    wartość pobierana musi być 5 > x > 0
+
+3. Jeśli newGame() -> points = 0
