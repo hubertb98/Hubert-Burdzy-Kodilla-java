@@ -1,0 +1,78 @@
+CREATE TABLE ISSUESLIST
+(
+	ID SERIAL PRIMARY KEY,
+	NAME VARCHAR(100)
+);
+
+CREATE TABLE ISSUE
+(
+	ID SERIAL PRIMARY KEY,
+	ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+	SUMMARY VARCHAR(100),
+	DESCRIPTION VARCHAR(1024),
+	USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLIST(ID),
+	FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLIST (NAME)
+VALUES ("Todo");
+
+INSERT INTO ISSUESLIST (NAME)
+VALUES ("In progress");
+
+INSERT INTO ISSUESLIST (NAME)
+VALUES ("Done");
+
+
+-- Todo
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, "Add button acction issue to issueslist", "Button buy doesn't work. Check why and fix this", 1);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, "Add moving issue to list", "My character doesn't move. Check code and fix bug", 3);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, "Add flash drive memory issue to list", "Format flash drive and try again ", 2);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, "Add database issue to list", "Search some informations about problem and try to fix this", 5);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, "Learn what is SOLID", "Describe each letter form SOLID and make some example", 4);
+
+
+-- In progress
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, "Searching some informations about database", "Searching informations how to input task to collumns and tables", 3);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, "Adding new button to website", "Client wants to add new button to 'call to acction' website", 1);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, "Create new character to minecraft", "Create bee which will be fly around flowers", 2);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, "Fixing bug about character move", "Character jump and receives damage", 4);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, "Fixing bug about adding new city to database", "When client wants add new city, website throw database error", 5);
+
+
+-- Done
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, "Created issue to issueslist", "Created 5 issue to each collumns from issueslist", 2);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, "Created 5 issue Todo", "Created 5 different issue in Todo collumn", 3);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, "Writed SQL code in txt file", "Write SQL code in txt file and send it to mentor", 1);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, "Sended letter to grandmother", "Write and send greeting letter to grandmother", 4);
+
+INSERT INTO ISSUE (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, "Readed 5 pages of book", "Read 5 pages of book and describe someone what you readed", 5);
+
+COMMIT;
