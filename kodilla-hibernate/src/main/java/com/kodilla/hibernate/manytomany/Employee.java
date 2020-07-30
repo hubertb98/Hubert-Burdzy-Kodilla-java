@@ -4,6 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+@NamedQuery(
+        name = "Employee.retrieveEmployeeWithGivenLastname",
+        query = "FROM Employee WHERE lastname = :LASTNAME"
+)
 
 @Entity
 @Table(name = "EMPLOYEES")
