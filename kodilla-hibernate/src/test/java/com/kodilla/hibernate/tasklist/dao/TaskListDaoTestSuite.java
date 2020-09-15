@@ -39,7 +39,7 @@ public class TaskListDaoTestSuite {
 
         //Then
         try {
-            Assert.assertEquals(2, readTaskList.size());
+            Assert.assertEquals(1, readTaskList.size());
         } finally {
             taskListDao.deleteAll();
         }

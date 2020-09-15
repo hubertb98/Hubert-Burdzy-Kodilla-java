@@ -57,9 +57,8 @@ public class CompanyDaoTestSuite {
 
         //CleanUp
         try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
         } catch (Exception e) {
 
         }
