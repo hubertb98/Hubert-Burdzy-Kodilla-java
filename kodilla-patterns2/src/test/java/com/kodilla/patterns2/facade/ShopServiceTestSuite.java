@@ -76,7 +76,6 @@ public class ShopServiceTestSuite {
             orderFacade.processOrder(order, 1L);
 
         } catch (OrderProcessingException e) {
-//            e.printStackTrace();
         }
     }
 }
